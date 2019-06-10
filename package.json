@@ -1,11 +1,11 @@
 {
   "name": "hackathon",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel index.html -p 3000"
+    "start": "parcel index.html -p 3000",
+    "build": "parcel build index.html"
   },
   "author": "",
   "license": "ISC",
@@ -22,5 +22,11 @@
     "@types/styled-components": "^4.1.16",
     "parcel-bundler": "^1.12.3",
     "typescript": "^3.5.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.trapti.tech/hosshii/TodoList.git"
+  },
+  "keywords": [],
+  "description": ""
 }
