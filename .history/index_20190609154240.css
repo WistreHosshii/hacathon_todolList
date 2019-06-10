@@ -1,0 +1,13 @@
+.title {
+    color: red;
+}
+
+
+table {
+    border-collapse: collapse;
+}
+
+.table th,
+table td {
+    border: solid 1px black;
+}
