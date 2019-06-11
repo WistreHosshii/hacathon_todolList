@@ -31,6 +31,7 @@ interface State {
 }
 
 export default class App extends Component<Props, State> {
+  private timerID!: number;
   constructor(props: any) {
     super(props);
     this.state = {
@@ -38,13 +39,12 @@ export default class App extends Component<Props, State> {
       value: '',
     };
     this.handleChange = this.handleChange.bind(this);
+    this.updateTable = this.updateTable.bind(this);
   }
 
   componentDidMount() {
-    get().then(response => {
-      const todos: Todo[] = response.data.todos;
-      this.setState({ todos });
-    });
+    this.updateTable();
+    this.timerID = setInterval(this.updateTable(), 5000);
   }
   addTaskHandler() {
     if (this.state.value !== '') {
@@ -63,6 +63,12 @@ export default class App extends Component<Props, State> {
   }
   handleChange(event: any) {
     this.setState({ value: event.target.value });
+  }
+  updateTable() {
+    get().then(response => {
+      const todos: Todo[] = response.data.todos;
+      this.setState({ todos });
+    });
   }
 
   render() {
