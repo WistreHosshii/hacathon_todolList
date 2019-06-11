@@ -56,7 +56,7 @@ export default class App extends Component<Props, State> {
     }
   }
   deleteTaskHandler(id: string) {
-    deleteTask(id).then(response => {
+    deleteTask(id).then(() => {
       const todos = this.state.todos.filter(v => v.id !== id);
       this.setState({ todos });
     });
