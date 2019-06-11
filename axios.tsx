@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = '//hackathon-test-server.jichoup.trap.show/';
+const url = '/api/';
 export const get = () => {
   return axios.get(url);
 };
