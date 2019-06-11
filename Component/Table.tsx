@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { get, post, deleteTask } from './axios';
 import styled from 'styled-components';
+import console = require('console');
 
 const CustomizedText = styled.div`
   font-size: 4rem;
@@ -46,6 +47,9 @@ export default class Timer extends Component<Props, State> {
     this.updateTable();
     this.timerID = setInterval(() => this.updateTable(), 5000);
   }
+  componentWillUnmount(): void {
+    clearInterval(this.timerID);
+  }
   addTaskHandler() {
     if (this.state.value !== '') {
       post(this.state.value).then(response => {
@@ -86,23 +90,26 @@ export default class Timer extends Component<Props, State> {
                   <th>削除</th>
                 </tr>
 
-                {this.state.todos.reverse().map((todo, i) => {
-                  return (
-                    <tr key={i}>
-                      <td>{todo.content}</td>
-                      <td>{new Date(todo.createdAt).toLocaleString()}</td>
-                      <td>
-                        <button
-                          onClick={() => {
-                            this.deleteTaskHandler(todo.id);
-                          }}
-                        >
-                          削除!
-                        </button>
-                      </td>
-                    </tr>
-                  );
-                })}
+                {this.state.todos
+                  .slice()
+                  .reverse()
+                  .map((todo, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{todo.content}</td>
+                        <td>{new Date(todo.createdAt).toLocaleString()}</td>
+                        <td>
+                          <button
+                            onClick={() => {
+                              this.deleteTaskHandler(todo.id);
+                            }}
+                          >
+                            削除!
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </JobTable>
             <Form className="computeTaskWrapper">
