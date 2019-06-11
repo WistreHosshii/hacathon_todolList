@@ -44,7 +44,7 @@ export default class Timer extends Component<Props, State> {
 
   componentDidMount() {
     this.updateTable();
-    this.timerID = setInterval(this.updateTable(), 5000);
+    this.timerID = setInterval(() => this.updateTable(), 5000);
   }
   addTaskHandler() {
     if (this.state.value !== '') {
