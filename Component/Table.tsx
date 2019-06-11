@@ -54,7 +54,7 @@ export default class Timer extends Component<Props, State> {
     if (this.state.value !== '') {
       post(this.state.value).then(response => {
         const todo: Todo = response.data;
-        this.setState(state => ({ todos: [...state.todos, todo] }));
+        this.setState(state => ({ todos: [todo, ...state.todos] }));
         this.setState({ value: '' });
       });
     }
@@ -70,7 +70,7 @@ export default class Timer extends Component<Props, State> {
   }
   updateTable() {
     get().then(response => {
-      const todos: Todo[] = response.data.todos;
+      const todos: Todo[] = response.data.todos.reverse();
       this.setState({ todos });
       console.log('Get success');
     });
@@ -90,26 +90,23 @@ export default class Timer extends Component<Props, State> {
                   <th>削除</th>
                 </tr>
 
-                {this.state.todos
-                  .slice()
-                  .reverse()
-                  .map((todo, i) => {
-                    return (
-                      <tr key={i}>
-                        <td>{todo.content}</td>
-                        <td>{new Date(todo.createdAt).toLocaleString()}</td>
-                        <td>
-                          <button
-                            onClick={() => {
-                              this.deleteTaskHandler(todo.id);
-                            }}
-                          >
-                            削除!
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                {this.state.todos.map((todo, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{todo.content}</td>
+                      <td>{new Date(todo.createdAt).toLocaleString()}</td>
+                      <td>
+                        <button
+                          onClick={() => {
+                            this.deleteTaskHandler(todo.id);
+                          }}
+                        >
+                          削除!
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </JobTable>
             <Form className="computeTaskWrapper">
