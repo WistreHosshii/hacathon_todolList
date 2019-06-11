@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = '/api/';
+const url = process.env.NODE_ENV === 'development' ? 'http://hackathon-test-server.jichoup.trap.show' : '/api/';
 export const get = () => {
   return axios.get(url);
 };
