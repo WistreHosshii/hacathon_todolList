@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import TodoList from './Component/Table';
-import AddTask from './Component/AddTask';
+import TodoList from './component/Table';
+import AddTask from './component/AddTask';
 import { Get, DeleteTask, Post } from './component/axios';
 import { Route, Link } from 'react-router-dom';
 
