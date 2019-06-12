@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-//import { Link } from 'react-router-dom';
+
 
 import styled from 'styled-components';
-// import PageButton from './Button';
-// import { Pages } from '../App';
+
+
 
 const Body = styled.div`
   width: 100%;
@@ -25,20 +25,20 @@ const TableWrapper = styled.div`
 interface Props {
   deleteTaskHandler: (id: string) => void;
   todos: Todo[];
-  //changePage: (page: Pages) => void;
+  
 }
-// interface State {
-//   todos: Todo[];
-//   value: string;
-// }
+
+
+
+
 
 export default class Timer extends Component<Props /*, State*/> {
   constructor(props: any) {
     super(props);
-    // this.state = {
-    //   todos: [],
-    //   value: '',
-    // };
+    
+    
+    
+    
   }
 
   render() {

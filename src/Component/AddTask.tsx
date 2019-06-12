@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-// import PageButton from './Button';
-// import { Pages } from '../App';
-// import { Link } from 'react-router-dom';
 
 interface Props {
   addTaskHandler: (value: string) => void;
   todos: Todo[];
-  //value: string;
-  //changePage: (page: Pages) => void;
 }
 interface State {
   value: string;
@@ -25,9 +20,6 @@ export default class AddTask extends Component<Props, State> {
   render() {
     return (
       <div>
-        {/* <Link to="/">
-          <PageButton changePage={this.props.changePage} page="List" />
-        </Link> */}
         <input type="text" value={this.state.value} onChange={this.handleChange} />
         <button
           onClick={() => {

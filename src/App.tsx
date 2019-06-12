@@ -19,7 +19,7 @@ const PageRouter = styled.div`
 `;
 
 interface State {
-  //page: Pages;
+  
   todos: Todo[];
   value: string;
 }
@@ -29,7 +29,7 @@ export default class App extends Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      //page: 'List',
+      
       todos: [],
       value: '',
     };
@@ -68,10 +68,10 @@ export default class App extends Component<{}, State> {
     });
   }
 
-  // changePage = (page: Pages) => {
-  //   this.setState({ page });
-  //   console.log(this.state.page);
-  // };
+  
+  
+  
+  
   render() {
     return (
       <div>
