@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 
-
 import styled from 'styled-components';
-
-
 
 const Body = styled.div`
   width: 100%;
@@ -25,28 +22,16 @@ const TableWrapper = styled.div`
 interface Props {
   deleteTaskHandler: (id: string) => void;
   todos: Todo[];
-  
 }
 
-
-
-
-
-export default class Timer extends Component<Props /*, State*/> {
+export default class Timer extends Component<Props> {
   constructor(props: any) {
     super(props);
-    
-    
-    
-    
   }
 
   render() {
     return (
       <Body>
-        {/* <Link to="addTask">
-          <PageButton changePage={this.props.changePage} page="AddTask"/>
-        </Link> */}
         <TableWrapper>
           <JobTable>
             <tbody>
