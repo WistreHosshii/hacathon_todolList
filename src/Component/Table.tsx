@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
-import PageButton from './Button';
-import { Pages } from '../App';
+// import PageButton from './Button';
+// import { Pages } from '../App';
 
 const CustomizedText = styled.div`
   font-size: 4rem;

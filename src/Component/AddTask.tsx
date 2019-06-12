@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import PageButton from './Button';
-import { Pages } from '../App';
-import { Link } from 'react-router-dom';
+// import PageButton from './Button';
+// import { Pages } from '../App';
+// import { Link } from 'react-router-dom';
 
 interface Props {
   addTaskHandler: (value: string) => void;
