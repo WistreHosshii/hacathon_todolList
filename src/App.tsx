@@ -5,13 +5,17 @@ import TodoList from './component/Table';
 import AddTask from './component/AddTask';
 import { Get, DeleteTask, Post } from './component/axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faHome, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export type Pages = 'List' | 'AddTask';
 const CustomizedText = styled.div`
   font-size: 4rem;
   color: red;
   text-align: center;
+`;
+const PageRouter = styled.div`
+  font-size: 2rem;
+  padding: 10px;
 `;
 
 interface State {
@@ -74,10 +78,14 @@ export default class App extends Component<{}, State> {
         <div />
         <CustomizedText>
           TODO LIST
-          <FontAwesomeIcon icon={faCoffee} />
+          <FontAwesomeIcon icon={faCoffee} style={{ fontSize: '3rem' }} />
         </CustomizedText>
-        <Link to="/">Home | </Link>
-        <Link to="/addTask">addTask</Link>
+        <PageRouter>
+          <FontAwesomeIcon icon={faHome} />
+          <Link to="/">Home </Link>
+          <FontAwesomeIcon icon={faPlus} />
+          <Link to="/addTask"> addTask</Link>
+        </PageRouter>
         <Route
           exact
           path="/"
