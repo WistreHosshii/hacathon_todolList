@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import PageButton from './Button';
@@ -29,7 +30,7 @@ const TableWrapper = styled.div`
 interface Props {
   deleteTaskHandler: (id: string) => void;
   todos: Todo[];
-  changePage: (page: Pages) => void;
+  //changePage: (page: Pages) => void;
 }
 // interface State {
 //   todos: Todo[];
@@ -49,7 +50,9 @@ export default class Timer extends Component<Props /*, State*/> {
     return (
       <Body>
         <CustomizedText>TODO LIST</CustomizedText>
-        <PageButton changePage={this.props.changePage} page="AddTask" />
+        {/* <Link to="addTask">
+          <PageButton changePage={this.props.changePage} page="AddTask"/>
+        </Link> */}
         <TableWrapper>
           <JobTable>
             <tbody>

@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import TodoList from './Component/Table';
 import AddTask from './Component/AddTask';
 import { Get, DeleteTask, Post } from './component/axios';
+import { Route, Link } from 'react-router-dom';
 
 export type Pages = 'List' | 'AddTask';
 
 interface State {
-  page: Pages;
+  //page: Pages;
   todos: Todo[];
   value: string;
 }
@@ -16,7 +17,7 @@ export default class App extends Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      page: 'List',
+      //page: 'List',
       todos: [],
       value: '',
     };
@@ -55,20 +56,33 @@ export default class App extends Component<{}, State> {
     });
   }
 
-  changePage = (page: Pages) => {
-    this.setState({ page });
-    console.log(this.state.page);
-  };
+  // changePage = (page: Pages) => {
+  //   this.setState({ page });
+  //   console.log(this.state.page);
+  // };
   render() {
-    switch (this.state.page) {
-      case 'List':
-        return (
-          <TodoList deleteTaskHandler={this.deleteTaskHandler} todos={this.state.todos} changePage={this.changePage} />
-        );
-      case 'AddTask':
-        return <AddTask addTaskHandler={this.addTaskHandler} todos={this.state.todos} changePage={this.changePage} />;
-      default:
-        this.setState({ page: 'List' });
-    }
+    return (
+      <div>
+        <Link to="/">Home | </Link>
+        <Link to="/addTask">addTask</Link>
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <TodoList
+              deleteTaskHandler={this.deleteTaskHandler}
+              todos={this.state.todos}
+              /*changePage={this.changePage}*/
+            />
+          )}
+        />
+        <Route
+          path="/addTask"
+          render={() => (
+            <AddTask addTaskHandler={this.addTaskHandler} todos={this.state.todos} /*changePage={this.changePage}*/ />
+          )}
+        />
+      </div>
+    );
   }
 }
