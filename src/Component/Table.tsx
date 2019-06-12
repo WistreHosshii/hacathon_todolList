@@ -24,7 +24,7 @@ interface Props {
   todos: Todo[];
 }
 
-export default class Timer extends Component<Props> {
+export default class TodoList extends Component<Props> {
   constructor(props: any) {
     super(props);
   }
