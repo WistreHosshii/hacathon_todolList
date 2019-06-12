@@ -1,10 +1,18 @@
 import React, { Component } from 'react';
+import { Route, Link } from 'react-router-dom';
+import styled from 'styled-components';
 import TodoList from './component/Table';
 import AddTask from './component/AddTask';
 import { Get, DeleteTask, Post } from './component/axios';
-import { Route, Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 export type Pages = 'List' | 'AddTask';
+const CustomizedText = styled.div`
+  font-size: 4rem;
+  color: red;
+  text-align: center;
+`;
 
 interface State {
   //page: Pages;
@@ -63,6 +71,11 @@ export default class App extends Component<{}, State> {
   render() {
     return (
       <div>
+        <div />
+        <CustomizedText>
+          TODO LIST
+          <FontAwesomeIcon icon={faCoffee} />
+        </CustomizedText>
         <Link to="/">Home | </Link>
         <Link to="/addTask">addTask</Link>
         <Route

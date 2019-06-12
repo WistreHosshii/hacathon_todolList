@@ -5,11 +5,6 @@ import styled from 'styled-components';
 // import PageButton from './Button';
 // import { Pages } from '../App';
 
-const CustomizedText = styled.div`
-  font-size: 4rem;
-  color: red;
-  text-align: center;
-`;
 const Body = styled.div`
   width: 100%;
   font-size: 1rem;
@@ -49,7 +44,6 @@ export default class Timer extends Component<Props /*, State*/> {
   render() {
     return (
       <Body>
-        <CustomizedText>TODO LIST</CustomizedText>
         {/* <Link to="addTask">
           <PageButton changePage={this.props.changePage} page="AddTask"/>
         </Link> */}
