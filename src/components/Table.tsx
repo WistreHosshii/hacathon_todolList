@@ -34,13 +34,13 @@ const TableContents = styled.tbody`
 `;
 const CustomTH = styled.th`
   font-size: 24px;
-  padding: 5px 0px 5px 15px;
+  padding: 10px;
   border-bottom: solid 1px black;
   width: 50%;
   min-width: 50px;
 `;
 const CustomTD = styled.td`
-  padding: 5px 0px 5px 15px;
+  padding: 10px;
   width: 50%;
   min-width: 50px;
 

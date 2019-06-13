@@ -4,7 +4,7 @@ import TodoList from './Table';
 import AddTask from './AddTask';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Route, Switch } from 'react-router';
+import { Route } from 'react-router';
 import console = require('console');
 
 interface State {
