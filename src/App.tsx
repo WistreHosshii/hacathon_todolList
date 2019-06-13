@@ -14,6 +14,7 @@ const CustomizedText = styled.div`
   font-size: 4rem;
   color: red;
   text-align: center;
+  padding-bottom: 15px;
 `;
 
 interface State {

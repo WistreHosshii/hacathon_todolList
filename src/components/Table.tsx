@@ -20,7 +20,7 @@ const JobTable = styled.table`
   text-align: left;
   margin: 0 auto;
   width: 100%;
-  border: solid 1px black;
+  border: solid 2px black;
   font-size: 18px;
   border-collapse: collapse;
 `;
@@ -34,15 +34,24 @@ const TableContents = styled.tbody`
 `;
 const CustomTH = styled.th`
   font-size: 24px;
-  padding: 7px;
+  padding: 5px 0px 5px 15px;
   border-bottom: solid 1px black;
   width: 50%;
   min-width: 50px;
 `;
 const CustomTD = styled.td`
-  padding: 10px 0px 0px 15px;
+  padding: 5px 0px 5px 15px;
   width: 50%;
   min-width: 50px;
+
+  &:hover {
+    background-color: lightblue;
+  }
+`;
+const CustomTR = styled.tr`
+  &:hover {
+    background-color: lightcyan;
+  }
 `;
 
 interface Props {
@@ -70,7 +79,7 @@ export default class Timer extends Component<Props> {
             <TableContents>
               {this.props.todos.map((todo, i) => {
                 return (
-                  <tr key={i}>
+                  <CustomTR key={i}>
                     <CustomTD>{todo.content}</CustomTD>
                     <CustomTD>{new Date(todo.createdAt).toLocaleString()}</CustomTD>
                     <CustomTD>
@@ -82,7 +91,7 @@ export default class Timer extends Component<Props> {
                         削除!
                       </button>
                     </CustomTD>
-                  </tr>
+                  </CustomTR>
                 );
               })}
             </TableContents>
