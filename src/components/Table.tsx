@@ -6,19 +6,45 @@ const Body = styled.div`
   width: 100%;
   font-size: 1rem;
 `;
-const JobTable = styled.table`
-  text-align: left;
-  margin: 0 auto;
-  width: 100%;
-  border: solid 1px black;
-`;
+
 const Form = styled.div`
   padding-top: 15px;
 `;
 const TableWrapper = styled.div`
   margin: 0 auto;
   width: 70%;
+  padding: 3rem;
+  height: 100px;
 `;
+const JobTable = styled.table`
+  text-align: left;
+  margin: 0 auto;
+  width: 100%;
+  border: solid 1px black;
+  font-size: 18px;
+  border-collapse: collapse;
+`;
+const TableTitle = styled.thead`
+  display: block;
+`;
+const TableContents = styled.tbody`
+  display: block;
+  overflow-y: scroll;
+  height: 70vh;
+`;
+const CustomTH = styled.th`
+  font-size: 24px;
+  padding: 7px;
+  border-bottom: solid 1px black;
+  width: 50%;
+  min-width: 50px;
+`;
+const CustomTD = styled.td`
+  padding: 10px 0px 0px 15px;
+  width: 50%;
+  min-width: 50px;
+`;
+
 interface Props {
   deleteTaskHandler: (id: string) => void;
   todos: Todo[];
@@ -34,18 +60,20 @@ export default class Timer extends Component<Props> {
       <Body>
         <TableWrapper>
           <JobTable>
-            <tbody>
+            <TableTitle>
               <tr>
-                <th>content</th>
-                <th>Created At</th>
-                <th>削除</th>
+                <CustomTH>content</CustomTH>
+                <CustomTH>Created At</CustomTH>
+                <CustomTH>削除</CustomTH>
               </tr>
+            </TableTitle>
+            <TableContents>
               {this.props.todos.map((todo, i) => {
                 return (
                   <tr key={i}>
-                    <td>{todo.content}</td>
-                    <td>{new Date(todo.createdAt).toLocaleString()}</td>
-                    <td>
+                    <CustomTD>{todo.content}</CustomTD>
+                    <CustomTD>{new Date(todo.createdAt).toLocaleString()}</CustomTD>
+                    <CustomTD>
                       <button
                         onClick={() => {
                           this.props.deleteTaskHandler(todo.id);
@@ -53,11 +81,11 @@ export default class Timer extends Component<Props> {
                       >
                         削除!
                       </button>
-                    </td>
+                    </CustomTD>
                   </tr>
                 );
               })}
-            </tbody>
+            </TableContents>
           </JobTable>
           <Form />
         </TableWrapper>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import 'react-tabs/style/react-tabs.css';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import styled from 'styled-components';
 import TodoList from './components/Table';
 import AddTask from './components/AddTask';
@@ -8,14 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faHome, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 export type Pages = 'List' | 'AddTask';
+
 const CustomizedText = styled.div`
   font-size: 4rem;
   color: red;
   text-align: center;
-`;
-const PageRouter = styled.div`
-  font-size: 2rem;
-  padding: 10px;
 `;
 
 interface State {
@@ -69,34 +67,29 @@ export default class App extends Component<{}, State> {
   render() {
     return (
       <div>
-        <div />
         <CustomizedText>
           TODO LIST
           <FontAwesomeIcon icon={faCoffee} style={{ fontSize: '3rem' }} />
         </CustomizedText>
-        <PageRouter>
-          <FontAwesomeIcon icon={faHome} />
-          <Link to="/">Home </Link>
-          <FontAwesomeIcon icon={faPlus} />
-          <Link to="/addTask"> addTask</Link>
-        </PageRouter>
-        <Route
-          exact
-          path="/"
-          render={() => (
-            <TodoList
-              deleteTaskHandler={this.deleteTaskHandler}
-              todos={this.state.todos}
-              /*changePage={this.changePage}*/
-            />
-          )}
-        />
-        <Route
-          path="/addTask"
-          render={() => (
-            <AddTask addTaskHandler={this.addTaskHandler} todos={this.state.todos} /*changePage={this.changePage}*/ />
-          )}
-        />
+
+        <Tabs>
+          <TabList>
+            <Tab>
+              <FontAwesomeIcon icon={faHome} />
+              Home
+            </Tab>
+            <Tab>
+              <FontAwesomeIcon icon={faPlus} />
+              addTask
+            </Tab>
+          </TabList>
+          <TabPanel>
+            <TodoList deleteTaskHandler={this.deleteTaskHandler} todos={this.state.todos} />
+          </TabPanel>
+          <TabPanel>
+            <AddTask addTaskHandler={this.addTaskHandler} todos={this.state.todos} />
+          </TabPanel>
+        </Tabs>
       </div>
     );
   }
