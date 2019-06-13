@@ -16,7 +16,7 @@ interface Props {
   todos: Todo[];
   _props: any;
 }
-const tabs: string[] = ['/', 'addTask'];
+const tabs: string[] = ['/', '/addTask'];
 export default class Page extends Component<Props, State> {
   constructor(props: any) {
     super(props);
@@ -31,10 +31,13 @@ export default class Page extends Component<Props, State> {
     console.log(this.props._props.history);
     this.props._props.history.push(tabs[index]);
   }
+  getIndex = () => {
+    return tabs.indexOf(this.state.tabPath);
+  };
 
   render() {
     return (
-      <Tabs onSelect={this.handleSelect}>
+      <Tabs onSelect={this.handleSelect} selectedIndex={this.getIndex()}>
         <TabList>
           <Tab>
             <h3>
