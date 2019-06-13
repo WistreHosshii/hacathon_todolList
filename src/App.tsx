@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import TodoList from './component/Table';
-import AddTask from './component/AddTask';
-import { Get, DeleteTask, Post } from './component/axios';
+import TodoList from './components/Table';
+import AddTask from './components/AddTask';
+import { Get, DeleteTask, Post } from './components/axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faHome, faPlus } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,7 +19,6 @@ const PageRouter = styled.div`
 `;
 
 interface State {
-  
   todos: Todo[];
   value: string;
 }
@@ -29,7 +28,6 @@ export default class App extends Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
-      
       todos: [],
       value: '',
     };
@@ -68,10 +66,6 @@ export default class App extends Component<{}, State> {
     });
   }
 
-  
-  
-  
-  
   render() {
     return (
       <div>
