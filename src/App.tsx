@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import 'react-tabs/style/react-tabs.css';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import styled from 'styled-components';
-import TodoList from './components/Table';
-import AddTask from './components/AddTask';
-import { Get, DeleteTask, Post } from './components/axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faHome, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { Route, BrowserRouter as Router } from 'react-router-dom';
+
+import { Get, DeleteTask, Post } from './components/axios';
+import Pages from './components/Pages';
 
 export type Pages = 'List' | 'AddTask';
 
@@ -66,33 +66,25 @@ export default class App extends Component<{}, State> {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <CustomizedText>
           TODO LIST
           <FontAwesomeIcon icon={faCoffee} style={{ fontSize: '3rem' }} />
         </CustomizedText>
-
-        <Tabs>
-          <TabList>
-            <Tab>
-              <h3>
-                <FontAwesomeIcon icon={faHome} /> Home
-              </h3>
-            </Tab>
-            <Tab>
-              <h3>
-                <FontAwesomeIcon icon={faPlus} /> addTask
-              </h3>
-            </Tab>
-          </TabList>
-          <TabPanel>
-            <TodoList deleteTaskHandler={this.deleteTaskHandler} todos={this.state.todos} />
-          </TabPanel>
-          <TabPanel>
-            <AddTask addTaskHandler={this.addTaskHandler} todos={this.state.todos} />
-          </TabPanel>
-        </Tabs>
-      </div>
+        <Router>
+          <Route
+            path="/"
+            render={match => (
+              <Pages
+                deleteTaskHandler={this.deleteTaskHandler}
+                addTaskHandler={this.addTaskHandler}
+                todos={this.state.todos}
+                _props={match}
+              />
+            )}
+          />
+        </Router>
+      </React.Fragment>
     );
   }
 }
