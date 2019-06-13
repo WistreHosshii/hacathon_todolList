@@ -75,12 +75,14 @@ export default class App extends Component<{}, State> {
         <Tabs>
           <TabList>
             <Tab>
-              <FontAwesomeIcon icon={faHome} />
-              Home
+              <h3>
+                <FontAwesomeIcon icon={faHome} /> Home
+              </h3>
             </Tab>
             <Tab>
-              <FontAwesomeIcon icon={faPlus} />
-              addTask
+              <h3>
+                <FontAwesomeIcon icon={faPlus} /> addTask
+              </h3>
             </Tab>
           </TabList>
           <TabPanel>
