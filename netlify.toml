@@ -1,4 +1,4 @@
 [[redirects]]
- from = "/api/:id"
- to = "http://hackathon-test-server.jichoup.trap.show/:id"
+ from = "/api/"
+ to = "http://hackathon-test-server.jichoup.trap.show/"
  status = 200
